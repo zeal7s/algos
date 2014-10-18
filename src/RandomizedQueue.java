@@ -52,11 +52,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    *          item to add
    */
   public void enqueue(Item item) {
-    if (item == null)
+    if (item == null) {
       throw new NullPointerException("The item to add is null!");
-    if (num == items.length)
+    }
+    
+    if (num == items.length) {
       resize(num << 1);
-
+    }
+    
     items[num++] = item;
   }
 
@@ -66,16 +69,18 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    * @return
    */
   public Item dequeue() {
-    if (num == 0)
+    if (num == 0) {
       throw new NoSuchElementException("The randomized queue is empty!");
+    }
 
     int random = StdRandom.uniform(num);
     swap(--num, random);
 
     Item ret = items[num];
     items[num] = null;
-    if (num < (items.length >> 2))
+    if (num < (items.length >> 2)) {
       resize(items.length >> 2);
+    }
 
     return ret;
   }
@@ -87,8 +92,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    *          new capacity of the queue
    */
   private void resize(int capacity) {
-    if (capacity < MIN_CAPACITY)
+    if (capacity < MIN_CAPACITY) {
       return;
+    }
 
     @SuppressWarnings("unchecked")
     Item[] copy = (Item[]) new Object[capacity];
@@ -105,8 +111,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    *          the index of the other item
    */
   private void swap(int i, int j) {
-    if (i == j)
+    if (i == j) {
       return;
+    }
 
     Item temp = items[i];
     items[i] = items[j];
@@ -153,8 +160,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
       count = num;
 
       randoms = new int[count];
-      for (int i = 0; i < count; ++i)
+      for (int i = 0; i < count; ++i) {
         randoms[i] = i;
+      }
       StdRandom.shuffle(randoms);
     }
 
@@ -165,8 +173,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     @Override
     public Item next() {
-      if (!hasNext())
+      if (!hasNext()) {
         throw new NoSuchElementException();
+      }
+      
       return items[randoms[--count]];
     }
 

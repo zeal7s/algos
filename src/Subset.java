@@ -26,11 +26,14 @@ public class Subset {
       queue.enqueue(str);
     }
 
-    if (k > queue.size())
+    if (k > queue.size()) {
       k = queue.size();
+    }
     for (String str : queue) {
-      if (k == 0)
+      if (k == 0) {
         break;
+      }
+      
       StdOut.println(str);
       --k;
     }
