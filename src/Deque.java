@@ -167,6 +167,35 @@ public class Deque<Item> implements Iterable<Item> {
 
   public static void main(String[] args) {
     // unit testing
+	  //1st line is 1 
+	  Deque<String> dq = new Deque<String>();
+	  while (!StdIn.isEmpty()) {
+	      switch (StdIn.readInt()) {
+	      case 2:
+	        dq.isEmpty();
+	        break;
+	      case 3:
+	        dq.size();
+	        break;
+	      case 4:
+	        dq.addFirst(StdIn.readString());
+	        break;
+	      case 5:
+	        dq.addLast(StdIn.readString());
+	        break;
+	      case 6:
+	        dq.removeFirst();
+	        break;
+	      case 7:
+	    	  dq.removeLast();
+	    	  break;
+	      default:
+	        break;
+	      }
+	    }
+	  
+	  // last line is 8
+	  dq.printAll();
 
   }
 }
