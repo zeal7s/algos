@@ -208,12 +208,13 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
       case 6:
         queue.sample();
         break;
+      case 7:
+        /* the last line is "7" */
+        queue.printAll();
+        return;
       default:
         break;
       }
     }
-
-    /* the last line is "7" */
-    queue.printAll();
   }
 }
